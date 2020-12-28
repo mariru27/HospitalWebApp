@@ -20,10 +20,10 @@
                       <ul class="navbar-nav flex-grow-1">
 
                               <li class="nav-item">
-                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Prescription/test.php">Prescription</a>
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Reteta/test.php">Reteta</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link text-dark" >Medicine</a>
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Pacient/index.php">Pacient</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link text-dark" >Diagnostic</a>
