@@ -20,13 +20,22 @@
                       <ul class="navbar-nav flex-grow-1">
 
                               <li class="nav-item">
-                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Reteta/test.php">Reteta</a>
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Reteta/index.php">Reteta</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Pacient/index.php">Pacient</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link text-dark" >Diagnostic</a>
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Medicament/index.php">Medicament</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Diagnostic/index.php">Diagnostic</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Medic/index.php">Medic</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Tratament/index.php">Tratament</a>
                               </li>
                       </ul>
                   </div>
