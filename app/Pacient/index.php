@@ -3,7 +3,8 @@
   include_once "functions.php";
 ?>
 
-<h1>index page</h1>
+<h4 class="display-4">Pacienti</h4>
+
 
 <?php
   AfiseazaPacienti();

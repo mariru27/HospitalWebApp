@@ -16,15 +16,20 @@
     print("</tr></thead><tbody>");
 
 
-
-
-        while ($row = oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS)) {
-        print("<tr>");
-        foreach ($row as $item) {
-            print "<td>" . $item . "</td>";
-        }
-        print("</tr>");
+    while ($row = oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS)) {
+      print("<tr>");
+      foreach ($row as $item) {
+          print "<td>" . $item . "</td>";
       }
+
+      print("<td>");
+      print("<a href=\"index.php\">Edit</a> | ");
+      print("<a href=\"index.php\">Delete</a>");
+            print("</tr>");
+      print("</td>");
+
+    }
+
     print "</tbody></table>\n";
 
   }
