@@ -11,7 +11,7 @@
 
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
               <div class="container">
-                  <a class="navbar-brand">Hospital Web App</a>
+                  <a href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Home.php" class="navbar-brand">Hospital Web App</a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                           aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
