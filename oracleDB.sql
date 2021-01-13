@@ -15,6 +15,14 @@ CREATE TABLE DIAGNOSTIC(
     CONSTRAINT pk_idDiagnostic PRIMARY KEY (idDiagnostic)
 );
 
+CREATE TABLE TRATAMENT(
+    idTratament NUMBER(6),
+    descriere VARCHAR(500),
+    IdDiagnostic NUMBER(6),
+    CONSTRAINT pk_idTratament PRIMARY KEY (idTratament),
+    CONSTRAINT fk_idDiagnostic FOREIGN KEY (idDiagnostic) REFERENCES DIAGNOSTIC(idDiagnostic)
+);
+
 
 --need to create tables
 
