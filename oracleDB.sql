@@ -37,6 +37,16 @@ CREATE TABLE RETETA(
 );
 
 
+CREATE TABLE MEDIC(
+    idMedic NUMBER(6),
+    nume VARCHAR(255),
+    prenume VARCHAR(255),
+    idReteta NUMBER(6),
+    CONSTRAINT pk_idMedic PRIMARY KEY (idMedic),
+    CONSTRAINT fk_idReteta FOREIGN KEY (idReteta) REFERENCES RETETA(idReteta)
+);
+
+
 --need to create tables
 
 CREATE TABLE TRATAMENT(
