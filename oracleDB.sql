@@ -1,13 +1,18 @@
+DROP TABLE MEDICAMENT;
+DROP TABLE DIAGNOSTIC;
+
 CREATE TABLE MEDICAMENT(
-    IdMedicament NUMBER(6),
+    idMedicament NUMBER(6),
     denumire VARCHAR(255),
-    cantitate VARCHAR(255)
+    cantitate VARCHAR(255),
+    CONSTRAINT pk_idMedicament PRIMARY KEY (idMedicament)
 );
 
 CREATE TABLE DIAGNOSTIC(
     IdDiagnostic NUMBER(6),
     denumire VARCHAR(255),
-    tip VARCHAR(255)
+    tip VARCHAR(255),
+    CONSTRAINT pk_idDiagnostic PRIMARY KEY (idDiagnostic)
 );
 
 
