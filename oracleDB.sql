@@ -85,6 +85,48 @@ MINVALUE 1 MAXVALUE 123489 NOCYCLE NOCACHE ORDER;
 
 --add values
 
-INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'paracetamol',20);
+DELETE FROM MEDICAMENT;
 
+INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'paracetamol',20);
+INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'nor',400);
+INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'coldhl',390);
+
+DELETE FROM DIAGNOSTIC;
+
+INSERT INTO DIAGNOSTIC VALUES(seq_diagnostic.nextval,'denumireDiagnostic1','tip1');
+INSERT INTO DIAGNOSTIC VALUES(seq_diagnostic.nextval,'denumireDiagnostic2','tip2');
+INSERT INTO DIAGNOSTIC VALUES(seq_diagnostic.nextval,'denumireDiagnostic3','tip3');
+
+DELETE FROM TRATAMENT;
+
+INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descrieretratament1',6);
+INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descrieretratament2',6);
+INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descriere tratament 3',7);
+
+DELETE FROM RETETA;
+
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal1','unitatemedicala1','judet1',123,4,3);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal2','unitatemedicala2','judet2',1133,4,2);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal3','unitatemedicala3','judet3',153,5,2);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal4','unitatemedicala4','judet4',223,6,3);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal5','unitatemedicala5','judet5',15,4,4);
+
+
+DELETE FROM MEDIC;
+
+INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume1','prenume1',1);
+INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume1','prenume1',2);
+INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume2','prenume2',3);
+INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume3','prenume3',4);
+
+
+
+
+
+DELETE FROM MEDICAMENT;
+select * from TRATAMENT;
 select * from MEDICAMENT;
+select * from RETETA;
+select * from MEDIC;
+
+
