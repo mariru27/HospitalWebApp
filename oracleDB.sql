@@ -23,6 +23,19 @@ CREATE TABLE TRATAMENT(
     CONSTRAINT fk_idDiagnostic FOREIGN KEY (idDiagnostic) REFERENCES DIAGNOSTIC(idDiagnostic)
 );
 
+CREATE TABLE RETETA(
+    idReteta NUMBER(6),
+    codfiscal VARCHAR(255),
+	unitatemedicala VARCHAR(255),
+	judet VARCHAR(255),
+	nr_casa_asig_medic NUMBER(10),
+    idMedicament NUMBER(6),
+    idTratament NUMBER(6),
+    CONSTRAINT pk_idReteta PRIMARY KEY (idReteta),
+    CONSTRAINT fk_idMedicament FOREIGN KEY (idMedicament) REFERENCES MEDICAMENT(idMedicament),
+    CONSTRAINT fk_idTratament FOREIGN KEY (idTratament) REFERENCES TRATAMENT(idTratament)
+);
+
 
 --need to create tables
 
