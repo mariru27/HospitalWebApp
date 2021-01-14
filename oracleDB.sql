@@ -28,6 +28,8 @@ CREATE TABLE TRATAMENT(
 
 DROP TABLE RETETA;
 
+select * from tratament;
+
 
 CREATE TABLE RETETA(
     idReteta NUMBER(6),
@@ -35,11 +37,7 @@ CREATE TABLE RETETA(
 	unitatemedicala VARCHAR(255),
 	judet VARCHAR(255),
 	nr_casa_asig_medic NUMBER(10),
---    idMedicReteta NUMBER(6),
---    idTratament NUMBER(6),
-    CONSTRAINT pk_idReteta PRIMARY KEY (idReteta),
---    CONSTRAINT fk_idMedicReteta FOREIGN KEY (idMedicReteta) REFERENCES MEDICRETETA(idMedicReteta),
---    CONSTRAINT fk_idTratament FOREIGN KEY (idTratament) REFERENCES TRATAMENT(idTratament)
+    CONSTRAINT pk_idReteta PRIMARY KEY (idReteta)
 );
 
 DROP TABLE MEDIC;
@@ -48,9 +46,7 @@ CREATE TABLE MEDIC(
     idMedic NUMBER(6),
     nume VARCHAR(255),
     prenume VARCHAR(255),
-    idReteta NUMBER(6),
-    CONSTRAINT pk_idMedic PRIMARY KEY (idMedic),
-    CONSTRAINT fk_idReteta FOREIGN KEY (idReteta) REFERENCES RETETA(idReteta)
+    CONSTRAINT pk_idMedic PRIMARY KEY (idMedic)
 );
 
 DROP TABLE PACIENT;
@@ -61,9 +57,7 @@ CREATE TABLE PACIENT(
     cnp NUMBER(13),
     nume VARCHAR(255),
     prenume VARCHAR(255),
-    tip_asigurare VARCHAR(255),
---    idRetetaPacient NUMBER(6),
---    CONSTRAINT fk_idRetetaPacient FOREIGN KEY(idRetetaPacient) REFERENCES RETETA(idReteta)
+    tip_asigurare VARCHAR(255)
 );
 
 --add tables
@@ -72,20 +66,19 @@ CREATE TABLE PACIENTRETERA(
     idPacientReteta NUMBER(6),
     idPacient NUMBER(6),
     idReteta NUMBER(6),
-    CONSTRAINT pk_idPacientReteta PRIMARY KEY (idpacientRetata),
-    CONSTRAINT fk_idPacient FOREIGN KEY(idPacient) REFERENCES PECIENT(idPacient),
+    CONSTRAINT pk_idPacientReteta PRIMARY KEY (idPacientReteta),
+    CONSTRAINT fk_idPacient FOREIGN KEY(idPacient) REFERENCES PACIENT(idPacient),
     CONSTRAINT fk_idReteta FOREIGN KEY(idReteta) REFERENCES RETETA(idReteta)
 );
 
 CREATE TABLE MEDICRETETA(
     idMedicReteta NUMBER(6),
     idMedic NUMBER(6),
-    idReteta NUMBER(6),
-    CONSTRAINT pk_idPacientReteta PRIMARY KEY (idMedicReteta),
+    idRetetaMedicFK NUMBER(6),
+    CONSTRAINT pk_idMedicReteta PRIMARY KEY (idMedicReteta),
     CONSTRAINT fk_idMedic FOREIGN KEY(idMedic) REFERENCES MEDIC(idMedic),
-    CONSTRAINT fk_idReteta FOREIGN KEY(idReteta) REFERENCES RETETA(idReteta)
+    CONSTRAINT fk_idRetetaMedicFK FOREIGN KEY(idRetetaMedicFK) REFERENCES RETETA(idReteta)
 );
-
 
 
 CREATE SEQUENCE seq_medicament INCREMENT BY 1
