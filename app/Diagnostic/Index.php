@@ -4,3 +4,7 @@
 ?>
 
 <h4 class="display-4">Diagnostic</h4>
+
+<?php
+  AfiseazaDiagnostice();
+?>
