@@ -123,17 +123,37 @@ INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descrieretratament1',6);
 INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descrieretratament2',6);
 INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descriere tratament 3',7);
 
+INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume medic','prenume medic');
+INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume medic1','prenume medic1');
+
+INSERT INTO PACIENT VALUES(seq_pacient.nextval,1234567890123,'nume','prenume','tipasigurare');
+INSERT INTO PACIENT VALUES(seq_pacient.nextval,1234564342422,'nume1','prenume1','tipasigurare1');
+INSERT INTO PACIENT VALUES(seq_pacient.nextval,1234565555555,'nume2','prenume2','tipasigurare2');
+
+select * from pacient;
+
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal1','unitatemedicala1','judet1',123);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal2','unitatemedicala2','judet2',1133);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal3','unitatemedicala3','judet3',153);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal4','unitatemedicala4','judet4',223);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal5','unitatemedicala5','judet5',15);
 
 
-
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal1','unitatemedicala1','judet1',123,4,3);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal2','unitatemedicala2','judet2',1133,4,3);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal3','unitatemedicala3','judet3',153,4,3);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal4','unitatemedicala4','judet4',223,4,3);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal5','unitatemedicala5','judet5',15,4,3);
+INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval,5,6);
+INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval,5,7);
+INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval,6,8);
+INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval,7,9);
 
 
-DELETE FROM MEDICAMENT;
+INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval,1,6);
+INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval,1,7);
+INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval,1,8);
+INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval,1,10);
+INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval,2,9);
+
+
+DELETE FROM PACIENT;
 select * from TRATAMENT;
-select * from MEDICAMENT;
-
+select * from RETETA;
+select * from PACIENT;
+select * from MEDIC;
