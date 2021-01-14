@@ -109,6 +109,12 @@ MINVALUE 1 MAXVALUE 123489 NOCYCLE NOCACHE ORDER;
 CREATE SEQUENCE seq_pacient INCREMENT BY 1
 MINVALUE 1 MAXVALUE 123489 NOCYCLE NOCACHE ORDER;
 
+CREATE SEQUENCE seq_pacientReteta INCREMENT BY 1
+MINVALUE 1 MAXVALUE 123489 NOCYCLE NOCACHE ORDER;
+
+CREATE SEQUENCE seq_medicReteta INCREMENT BY 1
+MINVALUE 1 MAXVALUE 123489 NOCYCLE NOCACHE ORDER;
+
 --add values
 
 INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'paracetamol',20);
@@ -132,9 +138,6 @@ INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal2','unitatemedicala2','ju
 INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal3','unitatemedicala3','judet3',153,4,3);
 INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal4','unitatemedicala4','judet4',223,4,3);
 INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal5','unitatemedicala5','judet5',15,4,3);
-
-
-
 
 
 DELETE FROM MEDICAMENT;
