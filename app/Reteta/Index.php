@@ -4,3 +4,7 @@
 ?>
 
 <h4 class="display-4">Reteta</h4>
+
+<?php
+  AfiseazaRetete();
+?>
