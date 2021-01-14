@@ -10,6 +10,7 @@
     oci_execute($result);
 
     print("<table class=\"table\"><thead><tr>");
+    print("<th>id</th>");
     print("<th>CNP</th>");
     print("<th>Nume</th>");
     print("<th>Prenume</th>");

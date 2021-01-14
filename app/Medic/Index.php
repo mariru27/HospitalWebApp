@@ -4,3 +4,7 @@
 ?>
 
 <h4 class="display-4">Medic</h4>
+
+<?php
+  AfiseazaMedici();
+?>
