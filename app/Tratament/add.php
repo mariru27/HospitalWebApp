@@ -11,11 +11,24 @@
     $query = sprintf("SELECT * FROM DIAGNOSTIC");
     $result = oci_parse($conn, $query);
     oci_execute($result);
+
+    $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+    if($action == 'add')
+    {
+        $categorie_id = $_REQUEST['idDiagnostic'];
+        $descriere = $_REQUEST['descriere'];
+
+        $query2 = sprintf("INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'%s', %d)", $descriere, $categorie_id);
+        $result2 = oci_parse($conn, $query2);
+        oci_execute($result2);
+
+    }
 ?>
 
 <div class="row">
     <div class="col-md-4">
-        <form action="add.php">
+        <form action="add.php" method="POST">
+        <input type="hidden" name="action" value="add">
             <div class="form-group">
                 <label for="idDiagnostic" class="control-label"></label>
                 <select name="idDiagnostic" for="idDiagnostic" class ="form-control">
