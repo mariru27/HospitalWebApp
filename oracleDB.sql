@@ -26,19 +26,23 @@ CREATE TABLE TRATAMENT(
     CONSTRAINT fk_idDiagnostic FOREIGN KEY (idDiagnostic) REFERENCES DIAGNOSTIC(idDiagnostic)
 );
 
+DROP TABLE RETETA;
+
+
 CREATE TABLE RETETA(
     idReteta NUMBER(6),
     codfiscal VARCHAR(255),
 	unitatemedicala VARCHAR(255),
 	judet VARCHAR(255),
 	nr_casa_asig_medic NUMBER(10),
-    idMedicament NUMBER(6),
-    idTratament NUMBER(6),
+--    idMedicReteta NUMBER(6),
+--    idTratament NUMBER(6),
     CONSTRAINT pk_idReteta PRIMARY KEY (idReteta),
-    CONSTRAINT fk_idMedicament FOREIGN KEY (idMedicament) REFERENCES MEDICAMENT(idMedicament),
-    CONSTRAINT fk_idTratament FOREIGN KEY (idTratament) REFERENCES TRATAMENT(idTratament)
+--    CONSTRAINT fk_idMedicReteta FOREIGN KEY (idMedicReteta) REFERENCES MEDICRETETA(idMedicReteta),
+--    CONSTRAINT fk_idTratament FOREIGN KEY (idTratament) REFERENCES TRATAMENT(idTratament)
 );
 
+DROP TABLE MEDIC;
 
 CREATE TABLE MEDIC(
     idMedic NUMBER(6),
@@ -49,7 +53,7 @@ CREATE TABLE MEDIC(
     CONSTRAINT fk_idReteta FOREIGN KEY (idReteta) REFERENCES RETETA(idReteta)
 );
 
---DROP TABLE PACIENT;
+DROP TABLE PACIENT;
 
 CREATE TABLE PACIENT(
     idPacient NUMBER(6),
@@ -58,9 +62,31 @@ CREATE TABLE PACIENT(
     nume VARCHAR(255),
     prenume VARCHAR(255),
     tip_asigurare VARCHAR(255),
-    idRetetaPacient NUMBER(6),
-    CONSTRAINT fk_idRetetaPacient FOREIGN KEY(idRetetaPacient) REFERENCES RETETA(idReteta)
+--    idRetetaPacient NUMBER(6),
+--    CONSTRAINT fk_idRetetaPacient FOREIGN KEY(idRetetaPacient) REFERENCES RETETA(idReteta)
 );
+
+--add tables
+
+CREATE TABLE PACIENTRETERA(
+    idPacientReteta NUMBER(6),
+    idPacient NUMBER(6),
+    idReteta NUMBER(6),
+    CONSTRAINT pk_idPacientReteta PRIMARY KEY (idpacientRetata),
+    CONSTRAINT fk_idPacient FOREIGN KEY(idPacient) REFERENCES PECIENT(idPacient),
+    CONSTRAINT fk_idReteta FOREIGN KEY(idReteta) REFERENCES RETETA(idReteta)
+);
+
+CREATE TABLE MEDICRETETA(
+    idMedicReteta NUMBER(6),
+    idMedic NUMBER(6),
+    idReteta NUMBER(6),
+    CONSTRAINT pk_idPacientReteta PRIMARY KEY (idMedicReteta),
+    CONSTRAINT fk_idMedic FOREIGN KEY(idMedic) REFERENCES MEDIC(idMedic),
+    CONSTRAINT fk_idReteta FOREIGN KEY(idReteta) REFERENCES RETETA(idReteta)
+);
+
+
 
 CREATE SEQUENCE seq_medicament INCREMENT BY 1
 MINVALUE 1 MAXVALUE 123489 NOCYCLE NOCACHE ORDER;
@@ -85,39 +111,27 @@ MINVALUE 1 MAXVALUE 123489 NOCYCLE NOCACHE ORDER;
 
 --add values
 
-DELETE FROM MEDICAMENT;
-
 INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'paracetamol',20);
 INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'nor',400);
 INSERT INTO MEDICAMENT VALUES(seq_medicament.nextval,'coldhl',390);
 
-DELETE FROM DIAGNOSTIC;
 
 INSERT INTO DIAGNOSTIC VALUES(seq_diagnostic.nextval,'denumireDiagnostic1','tip1');
 INSERT INTO DIAGNOSTIC VALUES(seq_diagnostic.nextval,'denumireDiagnostic2','tip2');
 INSERT INTO DIAGNOSTIC VALUES(seq_diagnostic.nextval,'denumireDiagnostic3','tip3');
 
-DELETE FROM TRATAMENT;
-
 INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descrieretratament1',6);
 INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descrieretratament2',6);
 INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'descriere tratament 3',7);
 
-DELETE FROM RETETA;
+
+
 
 INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal1','unitatemedicala1','judet1',123,4,3);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal2','unitatemedicala2','judet2',1133,4,2);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal3','unitatemedicala3','judet3',153,5,2);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal4','unitatemedicala4','judet4',223,6,3);
-INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal5','unitatemedicala5','judet5',15,4,4);
-
-
-DELETE FROM MEDIC;
-
-INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume1','prenume1',1);
-INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume1','prenume1',2);
-INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume2','prenume2',3);
-INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume3','prenume3',4);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal2','unitatemedicala2','judet2',1133,4,3);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal3','unitatemedicala3','judet3',153,4,3);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal4','unitatemedicala4','judet4',223,4,3);
+INSERT INTO RETETA VALUES(seq_reteta.nextval,'codfiscal5','unitatemedicala5','judet5',15,4,3);
 
 
 
@@ -126,7 +140,4 @@ INSERT INTO MEDIC VALUES(seq_medic.nextval,'nume3','prenume3',4);
 DELETE FROM MEDICAMENT;
 select * from TRATAMENT;
 select * from MEDICAMENT;
-select * from RETETA;
-select * from MEDIC;
-
 
