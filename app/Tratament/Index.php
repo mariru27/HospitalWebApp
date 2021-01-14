@@ -4,3 +4,8 @@
 ?>
 
 <h4 class="display-4">Tratament</h4>
+
+
+<?php
+  AfiseazaTratamente();
+?>
