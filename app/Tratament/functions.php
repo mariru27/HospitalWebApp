@@ -8,7 +8,8 @@
     $query = sprintf("SELECT * FROM TRATAMENT");
     $result = oci_parse($conn, $query);
     oci_execute($result);
-
+    print("<a href=\"add.php\">Adauga tratament</a> ");
+    print("<br><br>");
     print("<table class=\"table\"><thead><tr>");
     print("<th>id</th>");
     print("<th>Descriere</th>");
@@ -23,8 +24,7 @@
       }
 
       print("<td>");
-      print("<a href=\"add.php\">Add</a> | ");
-      print("<a href=\"edit.php\">Edit</a> | ");
+      print("<a href=\"edit.php?idTratament=". $row['IDTRATAMENT']  ."\">Edit</a> | ");
       print("<a href=\"index.php\">Delete</a>");
             print("</tr>");
       print("</td>");
