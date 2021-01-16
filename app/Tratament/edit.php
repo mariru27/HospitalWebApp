@@ -19,13 +19,27 @@
   $result2 = oci_parse($conn, $query2);
   oci_execute($result2);
   $rowTratament = oci_fetch_array($result2, OCI_ASSOC+OCI_RETURN_NULLS);
+
+  //edit action
+  $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+  if($action == 'edit')
+  {
+    $idTratamet = $_REQUEST['idTratamet'];
+    $idDiagnostic = $_REQUEST['idDiagnostic'];
+    $descriere = $_REQUEST['descriere'];
+    //update in database
+
+  }
+
+
 ?>
 
 
 <div class="row">
     <div class="col-md-4">
-        <form action="add.php" method="POST">
+        <form action="edit.php" method="GET">
         <input type="hidden" name="action" value="edit">
+        <input type="hidden" name="idTratament" value="<?php echo $_REQUEST['idTratamet']?>">
             <div class="form-group">
                 <label for="idDiagnostic" class="control-label"></label>
                 <select name="idDiagnostic" for="idDiagnostic" class ="form-control">
@@ -33,7 +47,6 @@
                     while ($row = oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS)) 
                     {         
                         print("<option value = ". $row['IDDIAGNOSTIC'] . ">". $row['DENUMIRE'] ."</option>");
-
                     }
                 ?>
                 </select>
