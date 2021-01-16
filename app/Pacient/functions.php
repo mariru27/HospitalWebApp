@@ -26,9 +26,9 @@
       }
 
       print("<td>");
-      print("<a href=\"index.php\">Edit</a>");
+      print("<a href=\"edit.php\">Edit</a> | ");
       print("<a href=\"index.php\">Delete</a>");
-            print("</tr>");
+      print("</tr>");
       print("</td>");
 
     }
