@@ -24,11 +24,19 @@
   $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
   if($action == 'edit')
   {
-    $idTratamet = $_REQUEST['idTratamet'];
+    $idTratament = $_REQUEST['idTratament'];
     $idDiagnostic = $_REQUEST['idDiagnostic'];
     $descriere = $_REQUEST['descriere'];
-    //update in database
 
+    echo $idTratament;
+    echo $idDiagnostic;
+    echo $descriere;
+
+    //update in database
+    $queryUpdate = sprintf("UPDATE TRATAMENT SET DESCRIERE = '%s', IDDIAGNOSTIC = '%s' WHERE IDTRATAMENT = '%d'",
+                            $descriere, $idDiagnostic, $idTratament);
+    $resultUpdate = oci_parse($conn, $queryUpdate);
+    oci_execute($resultUpdate); 
   }
 
 
@@ -39,7 +47,7 @@
     <div class="col-md-4">
         <form action="edit.php" method="GET">
         <input type="hidden" name="action" value="edit">
-        <input type="hidden" name="idTratament" value="<?php echo $_REQUEST['idTratamet']?>">
+        <input type="hidden" name="idTratament" value="<?php echo $_REQUEST['idTratament']?>">
             <div class="form-group">
                 <label for="idDiagnostic" class="control-label"></label>
                 <select name="idDiagnostic" for="idDiagnostic" class ="form-control">
