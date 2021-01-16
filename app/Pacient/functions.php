@@ -26,8 +26,8 @@
       }
 
       print("<td>");
-      print("<a href=\"edit.php\">Edit</a> | ");
-      print("<a href=\"index.php\">Delete</a>");
+      print("<a href=\"edit.php?idPacient=". $row['IDPACIENT']  ."\">Edit</a> | ");
+      print("<a href=\"Index.php?action=delete&idPacient=". $row['IDPACIENT']  ."\">Delete</a>");
       print("</tr>");
       print("</td>");
 
