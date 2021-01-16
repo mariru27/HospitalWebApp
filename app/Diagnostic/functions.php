@@ -35,6 +35,14 @@
     print "</tbody></table>\n";
   }
 
+  function DeleteDignostic($idDiagnostic)
+  {
+    global $conn;
 
+    $queryDelete = sprintf("DELETE FROM DIAGNOSTIC WHERE IDDIAGNOSTIC=%d", $idDiagnostic);
+    $resultDelete = oci_parse($conn, $queryDelete);
+    oci_execute($resultDelete);
+
+  }
 
 ?>
