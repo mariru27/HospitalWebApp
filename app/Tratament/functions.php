@@ -28,7 +28,6 @@
       print("<a href=\"index.php\">Delete</a>");
             print("</tr>");
       print("</td>");
-
     }
 
     print "</tbody></table>\n";
