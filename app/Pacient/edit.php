@@ -16,6 +16,26 @@
   oci_execute($resultSelect);
   $rowPacient = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS);
 
+   //edit action
+   $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+   if($action == 'edit')
+   {
+     $idPacient = $_REQUEST['idPacient'];
+     $cnp = $_REQUEST['cnp'];
+     $nume = $_REQUEST['nume'];
+     $prenume = $_REQUEST['prenume'];
+     $tipAsigurare = $_REQUEST['tipAsigurare'];
+
+     echo $cnp . " " . $nume . " " . $prenume . " " . $tipAsigurare;
+ 
+     //update in database
+     $queryUpdate = sprintf("UPDATE PACIENT SET CNP = %d, NUME = '%s', PRENUME = '%s', TIP_ASIGURARE = '%s' WHERE IDPACIENT = '%d'",
+                             $cnp, $nume, $prenume, $tipAsigurare, $idPacient);
+     $resultUpdate = oci_parse($conn, $queryUpdate);
+     oci_execute($resultUpdate); 
+     header("Location: http://localhost/HospitalWebApp/app/Pacient/index.php");
+ 
+   }
 ?>
 
 
