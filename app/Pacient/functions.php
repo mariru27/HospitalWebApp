@@ -32,9 +32,7 @@
       print("</td>");
 
     }
-
     print "</tbody></table>\n";
-
   }
 
 ?>
