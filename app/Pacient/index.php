@@ -7,5 +7,12 @@
 
 
 <?php
+  $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+  if($action == 'delete')
+  {
+    //call delete function
+    $idPacient = $_REQUEST['idPacient'];
+    DeletePacient($idPacient);
+  }
   AfiseazaPacienti();
 ?>

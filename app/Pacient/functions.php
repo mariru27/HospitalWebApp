@@ -35,4 +35,14 @@
     print "</tbody></table>\n";
   }
 
+  function DeletePacient($idPacient)
+  {
+    global $conn;
+
+    $queryDelete = sprintf("DELETE FROM PACIENT WHERE IDPACIENT=%d", $idPacient);
+    $resultDelete = oci_parse($conn, $queryDelete);
+    oci_execute($resultDelete);
+
+  }
+
 ?>
