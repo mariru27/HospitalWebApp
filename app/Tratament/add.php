@@ -30,7 +30,7 @@
         <form action="add.php" method="POST">
         <input type="hidden" name="action" value="add">
             <div class="form-group">
-                <label for="idDiagnostic" class="control-label"></label>
+                <label for="idDiagnostic" class="control-label">Denumire diagnostic</label>
                 <select name="idDiagnostic" for="idDiagnostic" class ="form-control">
                 <?php
                     while ($row = oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS)) 
@@ -42,7 +42,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for = "descriere" class="control-label"></label>
+                <label for = "descriere" class="control-label">Descriere</label>
                 <textarea class="form-control" id="descriere" name = "descriere" rows="3"></textarea>
             </div>
             <div class="form-group">

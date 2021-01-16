@@ -47,7 +47,7 @@
         <input type="hidden" name="action" value="edit">
         <input type="hidden" name="idTratament" value="<?php echo $_REQUEST['idTratament']?>">
             <div class="form-group">
-                <label for="idDiagnostic" class="control-label"></label>
+                <label for="idDiagnostic" class="control-label">Denumire diagnostic</label>
                 <select name="idDiagnostic" for="idDiagnostic" class ="form-control">
                 <?php
                     while ($row = oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS)) 
@@ -58,7 +58,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for = "descriere" class="control-label"></label>
+                <label for = "descriere" class="control-label">Descriere</label>
                 <input style="width:20cm; height:2cm" class="form-control" type="text" name = "descriere" value ="<?php echo $rowTratament['DESCRIERE']?>">
             </div>
             <div class="form-group">
