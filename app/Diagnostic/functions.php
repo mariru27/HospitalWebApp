@@ -9,6 +9,8 @@
     $result = oci_parse($conn, $query);
     oci_execute($result);
 
+    print("<a href=\"add.php\">Adauga Diagnostic</a> ");
+    print("<br><br>");
     print("<table class=\"table\"><thead><tr>");
     print("<th>id</th>");
     print("<th>Denumire</th>");
@@ -23,10 +25,9 @@
       }
 
       print("<td>");
-      print("<a href=\"index.php\">Add</a> | ");
-      print("<a href=\"index.php\">Edit</a> | ");
-      print("<a href=\"index.php\">Delete</a>");
-            print("</tr>");
+      print("<a href=\"edit.php?idPacient=". $row['IDDIAGNOSTIC']  ."\">Edit</a> | ");
+      print("<a href=\"Index.php?action=delete&idPacient=". $row['IDDIAGNOSTIC']  ."\">Delete</a>");
+      print("</tr>");
       print("</td>");
 
     }
