@@ -5,6 +5,22 @@
 
 <h4 class="display-4">Adauga Diagnostic</h4>
 
+<?php 
+    //diagnostic
+    global $conn;
+
+    $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+    if($action == 'add')
+    {
+        $denumire = $_REQUEST['denumire'];
+        $tip = $_REQUEST['tip'];
+
+        $queryInsert = sprintf("INSERT INTO DIAGNOSTIC VALUES(seq_diagnostic.nextval,'%s', '%s')", $denumire, $tip);
+        $resultInsert = oci_parse($conn, $queryInsert);
+        oci_execute($resultInsert);
+        header("Location: http://localhost/HospitalWebApp/app/Diagnostic/index.php");
+    }
+?>
 
 <div class="row">
     <div class="col-md-4">
