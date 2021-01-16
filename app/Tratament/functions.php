@@ -16,21 +16,29 @@
     print("<th>id diagnostic</th>");
     print("</tr></thead><tbody>");
 
-
     while ($row = oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS)) {
       print("<tr>");
       foreach ($row as $item) {
           print "<td>" . $item . "</td>";
       }
-
       print("<td>");
       print("<a href=\"edit.php?idTratament=". $row['IDTRATAMENT']  ."\">Edit</a> | ");
-      print("<a href=\"index.php\">Delete</a>");
-            print("</tr>");
+      print("<a href=\"Index.php?action=delete&idTratament=". $row['IDTRATAMENT']  ."\">Delete</a>");
+      print("</tr>");
       print("</td>");
     }
 
     print "</tbody></table>\n";
+
+  };
+
+  function DeleteTratament($idTratament)
+  {
+    global $conn;
+
+    $queryDelete = sprintf("DELETE FROM TRATAMENT WHERE IDTRATAMENT=%d", $idTratament);
+    $resultDelete = oci_parse($conn, $queryDelete);
+    oci_execute($resultDelete);
 
   }
 

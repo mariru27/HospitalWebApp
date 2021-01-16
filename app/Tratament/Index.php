@@ -7,5 +7,13 @@
 
 
 <?php
+  $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+  if($action == 'delete')
+  {
+    //call delete function
+    $idTratament = $_REQUEST['idTratament'];
+    DeleteTratament($idTratament);
+  }
+
   AfiseazaTratamente();
 ?>
