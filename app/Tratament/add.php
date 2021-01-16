@@ -21,7 +21,8 @@
         $query2 = sprintf("INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'%s', %d)", $descriere, $categorie_id);
         $result2 = oci_parse($conn, $query2);
         oci_execute($result2);
-        
+        header("Location: http://localhost/HospitalWebApp/app/Tratament/index.php");
+
     }
 ?>
 

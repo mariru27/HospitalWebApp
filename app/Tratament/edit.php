@@ -28,15 +28,13 @@
     $idDiagnostic = $_REQUEST['idDiagnostic'];
     $descriere = $_REQUEST['descriere'];
 
-    echo $idTratament;
-    echo $idDiagnostic;
-    echo $descriere;
-
     //update in database
     $queryUpdate = sprintf("UPDATE TRATAMENT SET DESCRIERE = '%s', IDDIAGNOSTIC = '%s' WHERE IDTRATAMENT = '%d'",
                             $descriere, $idDiagnostic, $idTratament);
     $resultUpdate = oci_parse($conn, $queryUpdate);
     oci_execute($resultUpdate); 
+     header("Location: http://localhost/HospitalWebApp/app/Tratament/index.php");
+
   }
 
 
