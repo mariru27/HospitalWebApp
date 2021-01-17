@@ -41,6 +41,12 @@
                               <li class="nav-item">
                                   <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Tratament/index.php">Tratament</a>
                               </li>
+                              <li class="nav-item">
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Medic_Reteta/index.php">Medic Reteta</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link text-dark" href="<?php  $_SERVER["DOCUMENT_ROOT"];?>/HospitalWebApp/app/Pacient_Reteta/index.php">Pacient Reteta</a>
+                              </li>
                       </ul>
                   </div>
               </div>
