@@ -26,11 +26,10 @@
       foreach ($row as $item) {
           print "<td>" . $item . "</td>";
       }
-
       print("<td>");
-      print("<a href=\"index.php\">Edit</a> | ");
-      print("<a href=\"index.php\">Delete</a>");
-            print("</tr>");
+      print("<a href=\"edit.php?idReteta=". $row['IDRETETA']  ."\">Edit</a> | ");
+      print("<a href=\"Index.php?action=delete&idReteta=". $row['IDRETETA']  ."\">Delete</a>");
+      print("</tr>");
       print("</td>");
 
     }
