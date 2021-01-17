@@ -11,7 +11,7 @@
   {
     //call delete function
     $idDiagnostic = $_REQUEST['idDiagnostic'];
-    DeletePacient($idDiagnostic);
+    DeleteDignostic($idDiagnostic);
   }
   AfiseazaDiagnostice();
 ?>

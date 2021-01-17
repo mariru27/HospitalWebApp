@@ -25,8 +25,8 @@
       }
 
       print("<td>");
-      print("<a href=\"edit.php?idPacient=". $row['IDDIAGNOSTIC']  ."\">Edit</a> | ");
-      print("<a href=\"Index.php?action=delete&idPacient=". $row['IDDIAGNOSTIC']  ."\">Delete</a>");
+      print("<a href=\"edit.php?idDiagnostic=". $row['IDDIAGNOSTIC']  ."\">Edit</a> | ");
+      print("<a href=\"Index.php?action=delete&idDiagnostic=". $row['IDDIAGNOSTIC']  ."\">Delete</a>");
       print("</tr>");
       print("</td>");
 
@@ -39,9 +39,18 @@
   {
     global $conn;
 
-    $queryDelete = sprintf("DELETE FROM DIAGNOSTIC WHERE IDDIAGNOSTIC=%d", $idDiagnostic);
-    $resultDelete = oci_parse($conn, $queryDelete);
-    oci_execute($resultDelete);
+    $queryExistDiagnostic = sprintf("SELECT * FROM TRATAMENT WHERE IDDIAGNOSTIC=%d", $idDiagnostic);
+    $resultExistDiagnostic = oci_parse($conn, $queryExistDiagnostic);
+    oci_execute($resultExistDiagnostic);
+
+    if(oci_fetch_array($result, OCI_ASSOC+OCI_RETURN_NULLS) != null)
+      echo "Trebuie sa stergi tratamentele care se refera la acest diagnostic";
+    else
+    {
+      $queryDelete = sprintf("DELETE FROM DIAGNOSTIC WHERE IDDIAGNOSTIC=%d", $idDiagnostic);
+      $resultDelete = oci_parse($conn, $queryDelete);
+      oci_execute($resultDelete);
+    }
 
   }
 
