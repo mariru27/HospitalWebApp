@@ -32,4 +32,12 @@
     print "</tbody></table>\n";
   }
 
+  function DeleteMedicament($idMedicament)
+  {
+    global $conn;
+    $queryDelete = sprintf("DELETE FROM MEDICAMENT WHERE IDMEDICAMENT=%d", $idMedicament);
+    $resultDelete = oci_parse($conn, $queryDelete);
+    oci_execute($resultDelete);
+  }
+
 ?>
