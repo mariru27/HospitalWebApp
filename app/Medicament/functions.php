@@ -23,17 +23,13 @@
       foreach ($row as $item) {
           print "<td>" . $item . "</td>";
       }
-
       print("<td>");
-      print("<a href=\"index.php\">Edit</a> | ");
-      print("<a href=\"index.php\">Delete</a>");
-            print("</tr>");
+      print("<a href=\"edit.php?idMedicament=". $row['IDMEDICAMENT']  ."\">Edit</a> | ");
+      print("<a href=\"Index.php?action=delete&idMedicament=". $row['IDMEDICAMENT']  ."\">Delete</a>");
+      print("</tr>");
       print("</td>");
-
     }
-
     print "</tbody></table>\n";
-
   }
 
 ?>
