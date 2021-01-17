@@ -24,11 +24,10 @@
       }
 
       print("<td>");
-      print("<a href=\"index.php\">Edit</a> | ");
-      print("<a href=\"index.php\">Delete</a>");
-            print("</tr>");
+      print("<a href=\"edit.php?idMedic=". $row['IDMEDIC']  ."\">Edit</a> | ");
+      print("<a href=\"Index.php?action=delete&idMedic=". $row['IDMEDIC']  ."\">Delete</a>");
+      print("</tr>");
       print("</td>");
-
     }
 
     print "</tbody></table>\n";
