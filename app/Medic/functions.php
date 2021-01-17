@@ -12,6 +12,7 @@
     print("<a href=\"add.php\">Adauga Medic</a> ");
     print("<br><br>");
     print("<table class=\"table\"><thead><tr>");
+    print("<th>id</th>");
     print("<th>Nume</th>");
     print("<th>Prenume</th>");
     print("</tr></thead><tbody>");
@@ -32,6 +33,14 @@
 
     print "</tbody></table>\n";
 
+  }
+
+  function DeleteMedic($idMedic)
+  {
+    global $conn;
+    $queryDelete = sprintf("DELETE FROM MEDIC WHERE IDMEDIC=%d", $idMedic);
+    $resultDelete = oci_parse($conn, $queryDelete);
+    oci_execute($resultDelete);
   }
 
 ?>
