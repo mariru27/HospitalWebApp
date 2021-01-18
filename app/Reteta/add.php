@@ -8,26 +8,33 @@
 
 
 <?php 
-    //medic
-    // global $conn;
-
-    // $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
-    // if($action == 'add')
-    // {
-    //     $codFiscal = $_REQUEST['codFiscal'];
-    //     $unitateMedicala = $_REQUEST['unitateMedicala'];
-    //     $judet = $_REQUEST['judet'];
-    //     $nrCasa = $_REQUEST['nrCasa'];
-        
-    //     $queryInsert = sprintf("INSERT INTO RETETA VALUES(seq_reteta.nextval,'%s', '%s','%s', %d)", $codFiscal, $unitateMedicala, $judet, $nrCasa);
-    //     $resultInsert = oci_parse($conn, $queryInsert);
-    //     oci_execute($resultInsert);
-    //     header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
-    // }
-
+    global $conn;
     $querySelect = sprintf("SELECT * FROM MEDICAMENT");
     $resultSelect = oci_parse($conn, $querySelect);
     oci_execute($resultSelect);
+
+    $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+    if($action == 'add')
+    {
+        while ($row = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS)) 
+        {
+            if(isset($_REQUEST[$row['IDMEDICAMENT']]))
+            {
+                echo $row['DENUMIRE'] . "<br>";
+
+            }
+        }
+        // $codFiscal = $_REQUEST['codFiscal'];
+        // $unitateMedicala = $_REQUEST['unitateMedicala'];
+        // $judet = $_REQUEST['judet'];
+        // $nrCasa = $_REQUEST['nrCasa'];
+        
+        // $queryInsert = sprintf("INSERT INTO RETETA VALUES(seq_reteta.nextval,'%s', '%s','%s', %d)", $codFiscal, $unitateMedicala, $judet, $nrCasa);
+        // $resultInsert = oci_parse($conn, $queryInsert);
+        // oci_execute($resultInsert);
+        // header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
+    }
+
 ?>
 
 
@@ -43,7 +50,7 @@
             {
         ?>
 
-        <input style="margin-left: 20px;" type="checkbox" value="" id="<?php echo $row['IDMEDICAMENT'] ?>">
+        <input style="margin-left: 20px;" type="checkbox" value="" name="<?php echo $row['IDMEDICAMENT'] ?>" id="<?php echo $row['IDMEDICAMENT'] ?>">
         <label for="<?php echo $row['IDMEDICAMENT'] ?>">
              <?php echo $row['DENUMIRE'] ?>
         </label>
