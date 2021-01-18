@@ -175,6 +175,14 @@ INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval,3,14);
 INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval,4,15);
 
 
+INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval,13,14);
+INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval,13,13);
+INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval,14,14);
+INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval,14,13);
+INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval,15,13);
+INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval,13,15);
+
+
 DELETE FROM medicament;
 select * from TRATAMENT;
 select * from RETETA;
