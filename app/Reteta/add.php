@@ -9,27 +9,57 @@
 
 <?php 
     //medic
-    global $conn;
+    // global $conn;
 
-    $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
-    if($action == 'add')
-    {
-        $codFiscal = $_REQUEST['codFiscal'];
-        $unitateMedicala = $_REQUEST['unitateMedicala'];
-        $judet = $_REQUEST['judet'];
-        $nrCasa = $_REQUEST['nrCasa'];
+    // $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
+    // if($action == 'add')
+    // {
+    //     $codFiscal = $_REQUEST['codFiscal'];
+    //     $unitateMedicala = $_REQUEST['unitateMedicala'];
+    //     $judet = $_REQUEST['judet'];
+    //     $nrCasa = $_REQUEST['nrCasa'];
         
-        $queryInsert = sprintf("INSERT INTO RETETA VALUES(seq_reteta.nextval,'%s', '%s','%s', %d)", $codFiscal, $unitateMedicala, $judet, $nrCasa);
-        $resultInsert = oci_parse($conn, $queryInsert);
-        oci_execute($resultInsert);
-        header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
-    }
+    //     $queryInsert = sprintf("INSERT INTO RETETA VALUES(seq_reteta.nextval,'%s', '%s','%s', %d)", $codFiscal, $unitateMedicala, $judet, $nrCasa);
+    //     $resultInsert = oci_parse($conn, $queryInsert);
+    //     oci_execute($resultInsert);
+    //     header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
+    // }
+
+    $querySelect = sprintf("SELECT * FROM MEDICAMENT");
+    $resultSelect = oci_parse($conn, $querySelect);
+    oci_execute($resultSelect);
 ?>
+
+
 
 <div class="row">
     <div class="col-md-4">
         <form action="add.php" method="get">
         <input type="hidden" name="action" value="add">
+        <h4>Alege medicamentele:</h4>
+        <div >
+        <?php
+            while ($row = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS)) 
+            {
+        ?>
+
+        <input style="margin-left: 20px;" type="checkbox" value="" id="<?php echo $row['IDMEDICAMENT'] ?>">
+        <label for="<?php echo $row['IDMEDICAMENT'] ?>">
+             <?php echo $row['DENUMIRE'] ?>
+        </label>
+
+        <?php
+            }
+        
+        ?>
+        
+        </div>
+
+        
+
+
+
+
             <div class="form-group">
                 <label for = "codFiscal" class="control-label">Cod fiscal</label>
                 <input class="form-control" type="text" id="codFiscal" name = "codFiscal" rows="3"> 
