@@ -5,3 +5,7 @@
 
 <h4 class="display-4">Medic-Reteta</h4>
 
+<?php
+
+AfiseazaMedic_Reteta();
+?>
