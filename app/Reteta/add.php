@@ -8,17 +8,21 @@
 
 
 <?php 
+    //get medicament
     global $conn;
     $querySelect = sprintf("SELECT * FROM MEDICAMENT");
     $resultSelect = oci_parse($conn, $querySelect);
     oci_execute($resultSelect);
 
-
-
     //get pacienti
     $querySelectPacient = sprintf("SELECT * FROM PACIENT");
     $resultSelectPacient = oci_parse($conn, $querySelectPacient);
     oci_execute($resultSelectPacient);
+
+    //get medici 
+    $querySelectMedic = sprintf("SELECT * FROM MEDIC");
+    $resultSelectMedic  = oci_parse($conn, $querySelectMedic);
+    oci_execute($resultSelectMedic);
 
 
 
@@ -54,25 +58,26 @@
                 //Store in MEDICAMENT-RETETA
                 // echo $row['DENUMIRE'] . "<br>";
                
-                // $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
-                // $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
-                // oci_execute($resultInsertMedicamentReteta);
-
-                //Store in PACIENT-RETETA
-
-                //Store in MEDIC-RETETA
+                $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
+                $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
+                oci_execute($resultInsertMedicamentReteta);
 
             }
+
+            //Store in MEDIC-RETETA
+            $idMedicRadio = isset($_REQUEST['idMedicRadio'])?true:false;
+
+
+            //Store in PACIENT-RETETA
+            $idPacientRadio = isset($_REQUEST['idPacientRadio'])?true:false;
+
 
 
         }
 
         // header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
     }
-        //get medici 
-        $querySelectMedic = sprintf("SELECT * FROM MEDIC");
-        $resultSelectMedic  = oci_parse($conn, $querySelectMedic);
-        oci_execute($resultSelectMedic);
+
 
 ?>
 
@@ -89,11 +94,11 @@
             {
         ?>
 
-        <input style="margin-left: 20px;" type="checkbox" value="" name="<?php echo $row['IDMEDICAMENT'] ?>" id="<?php echo $row['IDMEDICAMENT'] ?>">
+        <input type="checkbox" value="" name="<?php echo $row['IDMEDICAMENT'] ?>" id="<?php echo $row['IDMEDICAMENT'] ?>">
         <label for="<?php echo $row['IDMEDICAMENT'] ?>">
              <?php echo $row['DENUMIRE'] ?>
         </label>
-
+        <br>
         <?php
             }
         
@@ -106,11 +111,11 @@
             {
         ?>
 
-        <input style="margin-left: 20px;" type="radio" name="Medic" id="<?php echo $row['IDMEDIC'] ?>" value ="<?php echo $row['IDMEDIC'] ?>">
+        <input type="radio" name="idMedicRadio" id="<?php echo $row['IDMEDIC'] ?>" value ="<?php echo $row['IDMEDIC'] ?>">
         <label for="<?php echo $row['IDMEDIC'] ?>">
             <?php echo $row['NUME'] ?>
         </label>
-
+        <br>
         <?php
             }
         ?>
@@ -123,18 +128,18 @@
             while ($row = oci_fetch_array($resultSelectPacient, OCI_ASSOC+OCI_RETURN_NULLS)) 
             {
         ?>
-
-        <input style="margin-left: 20px;" type="radio" name="Pacient" id="<?php echo $row['IDMEDIC'] ?>" value ="<?php echo $row['IDMEDIC'] ?>">
-        <label for="<?php echo $row['IDMEDIC'] ?>">
+        <input type="radio" name="idPacientRadio" id="<?php echo $row['IDPACIENT'] ?>" value ="<?php echo $row['IDPACIENT'] ?>">
+        <label for="<?php echo $row['IDPACIENT'] ?>">
             <?php echo $row['NUME'] ?>
         </label>
-
+        <br>
         <?php
             }
         ?>
         </div>
 
 
+        <hr>
         
         </div>
             <div class="form-group">
