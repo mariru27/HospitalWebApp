@@ -106,7 +106,7 @@
             {
         ?>
 
-        <input style="margin-left: 20px;" type="radio" name="radioButton" id="<?php echo $row['IDMEDIC'] ?>" value ="<?php echo $row['IDMEDIC'] ?>">
+        <input style="margin-left: 20px;" type="radio" name="Medic" id="<?php echo $row['IDMEDIC'] ?>" value ="<?php echo $row['IDMEDIC'] ?>">
         <label for="<?php echo $row['IDMEDIC'] ?>">
             <?php echo $row['NUME'] ?>
         </label>
@@ -116,6 +116,23 @@
         ?>
         </div>
 
+
+        <h4>Alege pacient:</h4>
+        <div>
+        <?php
+            while ($row = oci_fetch_array($resultSelectPacient, OCI_ASSOC+OCI_RETURN_NULLS)) 
+            {
+        ?>
+
+        <input style="margin-left: 20px;" type="radio" name="Pacient" id="<?php echo $row['IDMEDIC'] ?>" value ="<?php echo $row['IDMEDIC'] ?>">
+        <label for="<?php echo $row['IDMEDIC'] ?>">
+            <?php echo $row['NUME'] ?>
+        </label>
+
+        <?php
+            }
+        ?>
+        </div>
 
 
         
