@@ -11,8 +11,8 @@
     //get medicament
     global $conn;
     $querySelect = sprintf("SELECT * FROM MEDICAMENT");
-    $resultSelect = oci_parse($conn, $querySelect);
-    oci_execute($resultSelect);
+    $resultSelectMedicament = oci_parse($conn, $querySelect);
+    oci_execute($resultSelectMedicament);
 
     //get pacienti
     $querySelectPacient = sprintf("SELECT * FROM PACIENT");
@@ -50,35 +50,34 @@
          $IdReteta = $seqValue - 1;
 
 
-        while ($row = oci_fetch_array($resultSelectMedic, OCI_ASSOC+OCI_RETURN_NULLS)) 
+        while ($row = oci_fetch_array($resultSelectMedicament, OCI_ASSOC+OCI_RETURN_NULLS)) 
         {
             $idMedicament = isset($_REQUEST[$row['IDMEDICAMENT']])?true:false;
             if($idMedicament)
             {
                 //Store in MEDICAMENT-RETETA
                 // echo $row['DENUMIRE'] . "<br>";
-               
                 $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
                 $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
                 oci_execute($resultInsertMedicamentReteta);
 
             }
 
-            //Store in MEDIC-RETETA
+            // //Store in MEDIC-RETETA
             $idMedicRadio = isset($_REQUEST['idMedicRadio'])?true:false;
             if($idMedicRadio)
             {
                 //Store in MEDICAMENT-RETETA
                 // echo $row['DENUMIRE'] . "<br>";
                
-                $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
-                $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
-                oci_execute($resultInsertMedicamentReteta);
+                $queryInsertMedicReteta = sprintf("INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval, %d, %d)", $idMedicRadio, $IdReteta);
+                $resultInsertMedicReteta = oci_parse($conn, $queryInsertMedicReteta);
+                oci_execute($resultInsertMedicReteta);
 
-            }
+            // }
 
-            //Store in PACIENT-RETETA
-            $idPacientRadio = isset($_REQUEST['idPacientRadio'])?true:false;
+            // //Store in PACIENT-RETETA
+            // $idPacientRadio = isset($_REQUEST['idPacientRadio'])?true:false;
 
 
 
@@ -99,7 +98,7 @@
         <h4>Alege medicamentele:</h4>
         <div >
         <?php
-            while ($row = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS)) 
+            while ($row = oci_fetch_array($resultSelectMedicament, OCI_ASSOC+OCI_RETURN_NULLS)) 
             {
         ?>
 
