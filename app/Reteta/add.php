@@ -13,11 +13,12 @@
     $resultSelect = oci_parse($conn, $querySelect);
     oci_execute($resultSelect);
 
-    //get medici 
 
 
     //get pacienti
-
+    $querySelectPacient = sprintf("SELECT * FROM PACIENT");
+    $resultSelectPacient = oci_parse($conn, $querySelectPacient);
+    oci_execute($resultSelectPacient);
 
 
 
@@ -45,7 +46,7 @@
          $IdReteta = $seqValue - 1;
 
 
-        while ($row = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS)) 
+        while ($row = oci_fetch_array($resultSelectMedic, OCI_ASSOC+OCI_RETURN_NULLS)) 
         {
             $idMedicament = isset($_REQUEST[$row['IDMEDICAMENT']])?true:false;
             if($idMedicament)
@@ -68,6 +69,10 @@
 
         // header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
     }
+        //get medici 
+        $querySelectMedic = sprintf("SELECT * FROM MEDIC");
+        $resultSelectMedic  = oci_parse($conn, $querySelectMedic);
+        oci_execute($resultSelectMedic);
 
 ?>
 
@@ -93,6 +98,26 @@
             }
         
         ?>
+
+        <h4>Alege medic:</h4>
+        <div>
+        <?php
+            while ($row = oci_fetch_array($resultSelectMedic, OCI_ASSOC+OCI_RETURN_NULLS)) 
+            {
+        ?>
+
+        <input style="margin-left: 20px;" type="radio" name="radioButton" id="<?php echo $row['IDMEDIC'] ?>" value ="<?php echo $row['IDMEDIC'] ?>">
+        <label for="<?php echo $row['IDMEDIC'] ?>">
+            <?php echo $row['NUME'] ?>
+        </label>
+
+        <?php
+            }
+        ?>
+        </div>
+
+
+
         
         </div>
             <div class="form-group">
