@@ -48,7 +48,6 @@
          //get next value, then decrement
          $seqValue = $rowSeq['S'];
          $IdReteta = $seqValue - 1;
-        echo $IdReteta;
 
         while ($row = oci_fetch_array($resultSelectMedicament, OCI_ASSOC+OCI_RETURN_NULLS)) 
         {
@@ -56,9 +55,6 @@
             if($idMedicament)
             {
                 //Store in MEDICAMENT-RETETA
-                // echo $row['DENUMIRE'] . "<br>";
-                $idMedicament =  $row['IDMEDICAMENT'];
-                echo "idMedicament: ". $idMedicament;
 
                 $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
                 $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
@@ -67,10 +63,9 @@
             }
         }
 
-            // //Store in MEDIC-RETETA
-            $idMedicRadio = isset($_REQUEST['idMedicRadio'])?true:false;
-            echo "idMedicRadio: ". $idPacientRadio;
-            if($idMedicRadio)
+            //Store in MEDIC-RETETA
+            $idMedicRadio = isset($_REQUEST['idMedicRadio'])?$_REQUEST['idMedicRadio']:"";
+            if($idMedicRadio != "")
             {
                
                 $queryInsertMedicReteta = sprintf("INSERT INTO MEDICRETETA VALUES(seq_medicReteta.nextval, %d, %d)", $idMedicRadio, $IdReteta);
@@ -81,7 +76,7 @@
 
             //Store in PACIENT-RETETA
             $idPacientRadio = isset($_REQUEST['idPacientRadio'])?true:false;
-            echo "idPacientRadio: ". $idPacientRadio;
+            echo "    idPacientRadio: ". $idPacientRadio;
             if($idMedicRadio)
             {
                
