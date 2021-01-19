@@ -66,7 +66,16 @@
 
             //Store in MEDIC-RETETA
             $idMedicRadio = isset($_REQUEST['idMedicRadio'])?true:false;
+            if($idMedicRadio)
+            {
+                //Store in MEDICAMENT-RETETA
+                // echo $row['DENUMIRE'] . "<br>";
+               
+                $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
+                $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
+                oci_execute($resultInsertMedicamentReteta);
 
+            }
 
             //Store in PACIENT-RETETA
             $idPacientRadio = isset($_REQUEST['idPacientRadio'])?true:false;
