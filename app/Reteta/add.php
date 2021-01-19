@@ -13,6 +13,14 @@
     $resultSelect = oci_parse($conn, $querySelect);
     oci_execute($resultSelect);
 
+    //get medici 
+
+
+    //get pacienti
+
+
+
+
     $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
     if($action == 'add')
     {
@@ -31,21 +39,28 @@
          $resultSelectSeq = oci_parse($conn, $querySelectSeq);
          oci_execute($resultSelectSeq);
          $rowSeq = oci_fetch_array($resultSelectSeq, OCI_ASSOC+OCI_RETURN_NULLS);
-         
+
          //get next value, then decrement
          $seqValue = $rowSeq['S'];
-         $seqValue = $seqValue - 1;
+         $IdReteta = $seqValue - 1;
 
 
         while ($row = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS)) 
         {
-             $idMedicament = isset($_REQUEST[$row['IDMEDICAMENT']])?true:false;
+            $idMedicament = isset($_REQUEST[$row['IDMEDICAMENT']])?true:false;
             if($idMedicament)
             {
+                //Store in MEDICAMENT-RETETA
                 // echo $row['DENUMIRE'] . "<br>";
-                // $queryInsert = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament,);
-                // $resultInsert = oci_parse($conn, $queryInsert);
-                // oci_execute($resultInsert);
+               
+                // $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
+                // $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
+                // oci_execute($resultInsertMedicamentReteta);
+
+                //Store in PACIENT-RETETA
+
+                //Store in MEDIC-RETETA
+
             }
 
 
