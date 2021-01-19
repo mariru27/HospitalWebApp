@@ -16,14 +16,7 @@
     $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
     if($action == 'add')
     {
-        while ($row = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS)) 
-        {
-            if(isset($_REQUEST[$row['IDMEDICAMENT']]))
-            {
-                echo $row['DENUMIRE'] . "<br>";
 
-            }
-        }
         // $codFiscal = $_REQUEST['codFiscal'];
         // $unitateMedicala = $_REQUEST['unitateMedicala'];
         // $judet = $_REQUEST['judet'];
@@ -32,6 +25,32 @@
         // $queryInsert = sprintf("INSERT INTO RETETA VALUES(seq_reteta.nextval,'%s', '%s','%s', %d)", $codFiscal, $unitateMedicala, $judet, $nrCasa);
         // $resultInsert = oci_parse($conn, $queryInsert);
         // oci_execute($resultInsert);
+
+        //select next value from seq_reteta
+         $querySelectSeq = sprintf("SELECT seq_reteta.nextval S FROM dual");
+         $resultSelectSeq = oci_parse($conn, $querySelectSeq);
+         oci_execute($resultSelectSeq);
+         $rowSeq = oci_fetch_array($resultSelectSeq, OCI_ASSOC+OCI_RETURN_NULLS);
+         
+         //get next value, then decrement
+         $seqValue = $rowSeq['S'];
+         $seqValue = $seqValue - 1;
+
+
+        while ($row = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS)) 
+        {
+             $idMedicament = isset($_REQUEST[$row['IDMEDICAMENT']])?true:false;
+            if($idMedicament)
+            {
+                // echo $row['DENUMIRE'] . "<br>";
+                // $queryInsert = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament,);
+                // $resultInsert = oci_parse($conn, $queryInsert);
+                // oci_execute($resultInsert);
+            }
+
+
+        }
+
         // header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
     }
 
@@ -61,12 +80,6 @@
         ?>
         
         </div>
-
-        
-
-
-
-
             <div class="form-group">
                 <label for = "codFiscal" class="control-label">Cod fiscal</label>
                 <input class="form-control" type="text" id="codFiscal" name = "codFiscal" rows="3"> 
