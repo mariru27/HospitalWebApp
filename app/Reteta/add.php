@@ -55,7 +55,7 @@
             if($idMedicament)
             {
                 //Store in MEDICAMENT-RETETA
-
+                $idMedicament = $row['IDMEDICAMENT'];
                 $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
                 $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
                 oci_execute($resultInsertMedicamentReteta);
@@ -75,14 +75,14 @@
             }
 
             //Store in PACIENT-RETETA
-            $idPacientRadio = isset($_REQUEST['idPacientRadio'])?true:false;
-            echo "    idPacientRadio: ". $idPacientRadio;
-            if($idMedicRadio)
+            $idPacientRadio = isset($_REQUEST['idPacientRadio'])?$_REQUEST['idPacientRadio']:"";
+            echo $idPacientRadio;
+            if($idPacientRadio != "")
             {
                
-                $queryInsertPacientReteta = sprintf("INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval, %d, %d)", $idPacientRadio, $IdReteta);
-                $resultInsertPacientReteta = oci_parse($conn, $queryInsertPacientReteta);
-                oci_execute($resultInsertPacientReteta);
+                // $queryInsertPacientReteta = sprintf("INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval, %d, %d)", $idPacientRadio, $IdReteta);
+                // $resultInsertPacientReteta = oci_parse($conn, $queryInsertPacientReteta);
+                // oci_execute($resultInsertPacientReteta);
 
             }
 
