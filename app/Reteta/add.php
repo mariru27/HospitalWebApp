@@ -76,20 +76,19 @@
 
             //Store in PACIENT-RETETA
             $idPacientRadio = isset($_REQUEST['idPacientRadio'])?$_REQUEST['idPacientRadio']:"";
-            echo $idPacientRadio;
             if($idPacientRadio != "")
             {
                
-                // $queryInsertPacientReteta = sprintf("INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval, %d, %d)", $idPacientRadio, $IdReteta);
-                // $resultInsertPacientReteta = oci_parse($conn, $queryInsertPacientReteta);
-                // oci_execute($resultInsertPacientReteta);
+                $queryInsertPacientReteta = sprintf("INSERT INTO PACIENTRETERA VALUES(seq_pacientReteta.nextval, %d, %d)", $idPacientRadio, $IdReteta);
+                $resultInsertPacientReteta = oci_parse($conn, $queryInsertPacientReteta);
+                oci_execute($resultInsertPacientReteta);
 
             }
 
 
         
 
-        // header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
+         header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
     }
 
 
