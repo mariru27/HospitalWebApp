@@ -30,14 +30,14 @@
     if($action == 'add')
     {
 
-        // $codFiscal = $_REQUEST['codFiscal'];
-        // $unitateMedicala = $_REQUEST['unitateMedicala'];
-        // $judet = $_REQUEST['judet'];
-        // $nrCasa = $_REQUEST['nrCasa'];
+        $codFiscal = $_REQUEST['codFiscal'];
+        $unitateMedicala = $_REQUEST['unitateMedicala'];
+        $judet = $_REQUEST['judet'];
+        $nrCasa = $_REQUEST['nrCasa'];
         
-        // $queryInsert = sprintf("INSERT INTO RETETA VALUES(seq_reteta.nextval,'%s', '%s','%s', %d)", $codFiscal, $unitateMedicala, $judet, $nrCasa);
-        // $resultInsert = oci_parse($conn, $queryInsert);
-        // oci_execute($resultInsert);
+        $queryInsert = sprintf("INSERT INTO RETETA VALUES(seq_reteta.nextval,'%s', '%s','%s', %d)", $codFiscal, $unitateMedicala, $judet, $nrCasa);
+        $resultInsert = oci_parse($conn, $queryInsert);
+        oci_execute($resultInsert);
 
         //select next value from seq_reteta
          $querySelectSeq = sprintf("SELECT seq_reteta.nextval S FROM dual");
@@ -48,7 +48,7 @@
          //get next value, then decrement
          $seqValue = $rowSeq['S'];
          $IdReteta = $seqValue - 1;
-
+        echo $IdReteta;
 
         while ($row = oci_fetch_array($resultSelectMedicament, OCI_ASSOC+OCI_RETURN_NULLS)) 
         {
@@ -57,14 +57,19 @@
             {
                 //Store in MEDICAMENT-RETETA
                 // echo $row['DENUMIRE'] . "<br>";
+                $idMedicament =  $row['IDMEDICAMENT'];
+                echo "idMedicament: ". $idMedicament;
+
                 $queryInsertMedicamentReteta = sprintf("INSERT INTO MEDICAMENTRETETA VALUES(seq_medicamentReteta.nextval, %d, %d)", $idMedicament, $IdReteta);
                 $resultInsertMedicamentReteta = oci_parse($conn, $queryInsertMedicamentReteta);
                 oci_execute($resultInsertMedicamentReteta);
 
             }
+        }
 
             // //Store in MEDIC-RETETA
             $idMedicRadio = isset($_REQUEST['idMedicRadio'])?true:false;
+            echo "idMedicRadio: ". $idPacientRadio;
             if($idMedicRadio)
             {
                
@@ -76,6 +81,7 @@
 
             //Store in PACIENT-RETETA
             $idPacientRadio = isset($_REQUEST['idPacientRadio'])?true:false;
+            echo "idPacientRadio: ". $idPacientRadio;
             if($idMedicRadio)
             {
                
@@ -86,7 +92,7 @@
             }
 
 
-        }
+        
 
         // header("Location: http://localhost/HospitalWebApp/app/Reteta/index.php");
     }
