@@ -14,7 +14,6 @@
   oci_execute($resultSelectMedic);
   ?>
 
-</ul> -->
 <?php
 
 
