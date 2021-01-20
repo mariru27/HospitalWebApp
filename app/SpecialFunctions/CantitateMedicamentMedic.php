@@ -33,8 +33,8 @@
   // print("</tr></thead><tbody>");
 
   while ($row = oci_fetch_array($resultSelectMedic, OCI_ASSOC+OCI_RETURN_NULLS)) {
-    print("<ul><li class=\"list-group-item\">IdMedic:". $row['IDMEDIC'] . "</li>");
-    print("<li class=\"list-group-item\">Nume:". $row['NUME'] . "</li>");
+    print("<ul><li >IdMedic:". $row['IDMEDIC'] . "</li>");
+    print("<li >Nume:". $row['NUME'] . "</li>");
 
     $idMedic = $row['IDMEDIC'];
 
@@ -46,8 +46,8 @@
     oci_execute($resultSelectMedicament);
 
     while ($rowMedicament = oci_fetch_array($resultSelectMedicament, OCI_ASSOC+OCI_RETURN_NULLS)) {
-      print("<ul><li class=\"list-group-item\">denumire:". $rowMedicament['DENUMIRE'] . "</li>");
-      print("<li class=\"list-group-item\">cantitate:". $rowMedicament['CANTITATE'] . "</li>");
+      print("<ul><li >Denumire medicament:". $rowMedicament['DENUMIRE'] . "</li>");
+      print("<li >Cantitate medicament:". $rowMedicament['CANTITATE'] . "</li>");
       print("</ul><br>");
     }
 
