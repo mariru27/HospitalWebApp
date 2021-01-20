@@ -199,6 +199,10 @@ DELETE FROM TRATAMENT WHERE IDTRATAMENT=9;
 
 
 
+SELECT MEDICAMENT.denumire, MEDICAMENT.cantitate, medicreteta.idmedic, medicreteta.idretetamedicfk,medicament.idmedicament
+FROM MEDICAMENT, MEDICRETETA, MEDICAMENTRETETA
+WHERE medicreteta.idmedic = 5 AND medicreteta.idretetamedicfk = medicamentreteta.idreteta_medicament AND medicament.idmedicament = medicamentreteta.idmedicament_reteta;
+
 
 COMMIT 
 
