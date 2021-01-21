@@ -197,13 +197,11 @@ UPDATE TRATAMENT SET DESCRIERE='descriere editata' WHERE IDTRATAMENT = 6;
 
 DELETE FROM TRATAMENT WHERE IDTRATAMENT=9;
 
-
-
 SELECT MEDICAMENT.denumire, MEDICAMENT.cantitate, medicreteta.idmedic, medicreteta.idretetamedicfk,medicament.idmedicament
 FROM MEDICAMENT, MEDICRETETA, MEDICAMENTRETETA
 WHERE medicreteta.idmedic = 5 AND medicreteta.idretetamedicfk = medicamentreteta.idreteta_medicament AND medicament.idmedicament = medicamentreteta.idmedicament_reteta;
 
-SELECT * FROM PACIENT WHERE pacient.cnp = '124235';
+SELECT * FROM PACIENT WHERE pacient.cnp = '1242356789123';
 
 COMMIT 
 

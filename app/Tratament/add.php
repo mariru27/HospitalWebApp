@@ -12,16 +12,31 @@
     $result = oci_parse($conn, $query);
     oci_execute($result);
 
+    //for validation
+    $valid = true;
+    $errorDescriere = "";
+
+
     $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
     if($action == 'add')
     {
         $categorie_id = $_REQUEST['idDiagnostic'];
         $descriere = $_REQUEST['descriere'];
 
-        $query2 = sprintf("INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'%s', %d)", $descriere, $categorie_id);
-        $result2 = oci_parse($conn, $query2);
-        oci_execute($result2);
-        header("Location: http://localhost/HospitalWebApp/app/Tratament/index.php");
+        if($descriere == null)
+        {
+            $errorDescriere = "Campul descriere trebuie completat";
+            $valid = false;
+        }
+
+        if($valid == true)
+        {
+
+            $query2 = sprintf("INSERT INTO TRATAMENT VALUES(seq_tratament.nextval,'%s', %d)", $descriere, $categorie_id);
+            $result2 = oci_parse($conn, $query2);
+            oci_execute($result2);
+            header("Location: http://localhost/HospitalWebApp/app/Tratament/index.php");
+        }
     }
 ?>
 
@@ -44,6 +59,7 @@
             <div class="form-group">
                 <label for = "descriere" class="control-label">Descriere</label>
                 <textarea class="form-control" id="descriere" name = "descriere" rows="3"></textarea>
+                <span style="color:red;" class="help-block"><?php echo $errorDescriere; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Adauga" class="btn btn-primary" />
