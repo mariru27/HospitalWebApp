@@ -25,7 +25,7 @@
             $errorDenumire = "Campul denumire trebuie completat";
             $valid = false;
         }
-        if($cantitate == null)
+        if($cantitate == null && $cantitate != null)
         {
             $errorCantitate = "Campul tip trebuie completat";
             $valid = false;
