@@ -203,6 +203,7 @@ SELECT MEDICAMENT.denumire, MEDICAMENT.cantitate, medicreteta.idmedic, medicrete
 FROM MEDICAMENT, MEDICRETETA, MEDICAMENTRETETA
 WHERE medicreteta.idmedic = 5 AND medicreteta.idretetamedicfk = medicamentreteta.idreteta_medicament AND medicament.idmedicament = medicamentreteta.idmedicament_reteta;
 
+SELECT * FROM PACIENT WHERE pacient.cnp = '124235';
 
 COMMIT 
 

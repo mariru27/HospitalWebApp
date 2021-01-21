@@ -25,12 +25,12 @@
             $errorDenumire = "Campul denumire trebuie completat";
             $valid = false;
         }
-        if($cantitate == null && $cantitate != null)
+        if($cantitate == null)
         {
             $errorCantitate = "Campul tip trebuie completat";
             $valid = false;
         }
-        if(!is_numeric($cantitate))
+        if(!is_numeric($cantitate) && $cantitate != null)
         {
             $errorCantitate = "Campul trebuie sa contina doar numere";
             $valid = false;
