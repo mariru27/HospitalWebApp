@@ -16,19 +16,38 @@
   oci_execute($resultSelect);
   $rowPacient = oci_fetch_array($resultSelect, OCI_ASSOC+OCI_RETURN_NULLS);
 
+  //for validation
+  $valid = true;
+  $errorNume = "";
+  $errorPrenume = "";
+
    //edit action
    $action = isset($_REQUEST['action'])? $_REQUEST['action']:"";
    if($action == 'edit')
    {
     $nume = $_REQUEST['nume'];
     $prenume = $_REQUEST['prenume'];
- 
-     //update in database
-     $queryUpdate = sprintf("UPDATE MEDIC SET NUME = '%s', PRENUME = '%s' WHERE IDMEDIC = %d",
-                             $nume, $prenume, $idMedic);
-     $resultUpdate = oci_parse($conn, $queryUpdate);
-     oci_execute($resultUpdate); 
-     header("Location: http://localhost/HospitalWebApp/app/Medic/index.php");
+    
+    if($nume == null)
+    {
+        $errorNume = "Campul nume trebuie completat";
+        $valid = false;
+    }
+    if($prenume == null)
+    {
+        $errorPrenume = "Campul prenume trebuie completat";
+        $valid = false;
+    }
+    if($valid == true)
+    {
+
+        //update in database
+        $queryUpdate = sprintf("UPDATE MEDIC SET NUME = '%s', PRENUME = '%s' WHERE IDMEDIC = %d",
+        $nume, $prenume, $idMedic);
+        $resultUpdate = oci_parse($conn, $queryUpdate);
+        oci_execute($resultUpdate); 
+        header("Location: http://localhost/HospitalWebApp/app/Medic/index.php");
+    }
  
    }
 ?>
@@ -41,10 +60,12 @@
             <div class="form-group">
                 <label for = "nume" class="control-label">Nume</label>
                 <input class="form-control" type="text" id="nume" name = "nume" rows="3" value ="<?php echo $rowPacient['NUME']?>"> 
+                <span style="color:red;" class="help-block"><?php echo $errorNume; ?></span>
             </div>
             <div class="form-group">
                 <label for = "prenume" class="control-label">Prenume</label>
                 <input class="form-control" type="text" id="prenume" name = "prenume" rows="3" value ="<?php echo $rowPacient['PRENUME']?>">
+                <span style="color:red;" class="help-block"><?php echo $errorPrenume; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Editeaza" class="btn btn-primary" />
